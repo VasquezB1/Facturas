@@ -23,7 +23,7 @@ public class ControladorCliente {
         codigo=0;
     }
     public int getCodigo() {
-        return ++codigo;
+        return codigo;
     }
     
      public void create(Cliente objeto){
@@ -61,7 +61,7 @@ public class ControladorCliente {
     
     public void imprimir(){
         for (Cliente cliente : lista) {
-            System.out.println(cliente.getNombre());
+            System.out.println(cliente.toString());
         }
     }
 }

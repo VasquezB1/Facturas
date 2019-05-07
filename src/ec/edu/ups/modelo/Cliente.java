@@ -31,7 +31,7 @@ public class Cliente {
 
 
     public int getCodigo() {
-        return ++codigo;
+        return codigo;
     }
 
     public void setCodigo(int codigo) {
@@ -72,7 +72,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "codigo=" + codigo + ", nombre=" + nombre + ", cedula=" + cedula + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+        return super.toString()+ "Cliente{" + "codigo=" + codigo + ", nombre=" + nombre + ", cedula=" + cedula + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }
 
     @Override

@@ -63,14 +63,27 @@ private ControladorCliente controladorcliente;
         });
         fileMenu.add(btncrear);
 
+        btnleer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         btnleer.setMnemonic('s');
-        btnleer.setText("Leer");
+        btnleer.setText("Buscar");
+        btnleer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnleerActionPerformed(evt);
+            }
+        });
         fileMenu.add(btnleer);
 
+        btnactualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         btnactualizar.setMnemonic('a');
         btnactualizar.setText("Actualizar");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
         fileMenu.add(btnactualizar);
 
+        btnborrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         btnborrar.setMnemonic('x');
         btnborrar.setText("Borrar");
         btnborrar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +170,20 @@ private ControladorCliente controladorcliente;
         crearcliente.setVisible(true);
         desktopPane.add(crearcliente);
     }//GEN-LAST:event_btncrearActionPerformed
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+        // TODO add your handling code here:
+        VentanaActualizar actualizarcliente = new VentanaActualizar(controladorcliente);
+        actualizarcliente.setVisible(true);
+        desktopPane.add(actualizarcliente);
+    }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void btnleerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnleerActionPerformed
+        // TODO add your handling code here:
+        VentanaBuscar buscarcliente = new VentanaBuscar(controladorcliente);
+        buscarcliente.setVisible(true);
+        desktopPane.add(buscarcliente);
+    }//GEN-LAST:event_btnleerActionPerformed
 
     /**
      * @param args the command line arguments
