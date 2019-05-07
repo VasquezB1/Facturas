@@ -208,7 +208,7 @@ private ControladorCliente controladorcliente;
         
         JOptionPane.showMessageDialog(this, "Se ha creado un cliente!!","Crear Cliente",JOptionPane.OK_OPTION);
         //Volver a establecer el codigo y limpiar las cajas de texto
-        txtcodigo.setText(String.valueOf(this.controladorcliente.getCodigo()));
+       txtcodigo.setText((String.valueOf(this.controladorcliente.getCodigo()+1)));
         txtnombre.setText("");
         txtdireccion.setText("");
         txtcedula.setText("");
