@@ -12,12 +12,12 @@ import ec.edu.ups.modelo.Cliente;
  *
  * @author Byron PC
  */
-public class VentanaBuscar extends javax.swing.JInternalFrame {
+public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
 private ControladorCliente controladorcliente;
     /**
      * Creates new form VentanaBuscar
      */
-    public VentanaBuscar(ControladorCliente controladorcliente) {
+    public VentanaBuscarCliente(ControladorCliente controladorcliente) {
         initComponents();
         this.controladorcliente =controladorcliente;
        

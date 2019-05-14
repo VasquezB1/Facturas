@@ -5,8 +5,8 @@
  */
 package ec.edu.ups.controladores;
 
-import ec.edu.ups.modelo.Cliente;
-import java.awt.List;
+
+import ec.edu.ups.modelo.Producto;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,12 +14,12 @@ import java.util.Set;
  *
  * @author Byron PC
  */
-public class ControladorCliente {
-    private Set<Cliente>lista;
+public class ControladorProducto {
+    private Set<Producto>lista;
     private int codigo;
             
 
-    public ControladorCliente() {
+    public ControladorProducto() {
         lista=new HashSet<>();
         codigo=0;
     }
@@ -27,22 +27,22 @@ public class ControladorCliente {
         return codigo;
     }
     
-     public void create(Cliente objeto){
+     public void create(Producto objeto){
         codigo++;
         objeto.setCodigo(codigo);
         lista.add(objeto);
     }
     
-    public Cliente read(int codigo){
-        for(Cliente cliente : lista){
-            if(codigo == cliente.getCodigo()){
-                return cliente;
+    public Producto read(int codigo){
+        for(Producto producto : lista){
+            if(codigo == producto.getCodigo()){
+                return producto;
             }
         }
         return null;
     }
     
-    public void update(Cliente objeto){
+    public void update(Producto objeto){
         if(lista.contains(objeto)){
             lista.remove(objeto);
             lista.add(objeto);
@@ -51,7 +51,7 @@ public class ControladorCliente {
     
     public void delete(int codigo){
         
-        for(Cliente objeto : lista){
+        for(Producto objeto : lista){
             if(objeto.getCodigo() == codigo){
                 lista.remove(objeto);
                 break;
@@ -61,11 +61,8 @@ public class ControladorCliente {
     }
     
     public void imprimir(){
-        for (Cliente cliente : lista) {
-            System.out.println(cliente.toString());
+        for (Producto producto : lista) {
+            System.out.println(producto.toString());
         }
-    }
-    public Set<Cliente> getLista(){
-        return lista;
     }
 }

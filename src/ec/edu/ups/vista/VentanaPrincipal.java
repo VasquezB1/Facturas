@@ -44,6 +44,7 @@ private ControladorCliente controladorcliente;
         copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -93,6 +94,7 @@ private ControladorCliente controladorcliente;
         });
         fileMenu.add(btnborrar);
 
+        btnlistar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         btnlistar.setText("Listar");
         btnlistar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,23 +106,26 @@ private ControladorCliente controladorcliente;
         menuBar.add(fileMenu);
 
         editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        editMenu.setText("Producto");
 
         cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
+        cutMenuItem.setText("Crear");
         editMenu.add(cutMenuItem);
 
         copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
+        copyMenuItem.setText("Leer");
         editMenu.add(copyMenuItem);
 
         pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
+        pasteMenuItem.setText("Actualizar");
         editMenu.add(pasteMenuItem);
 
         deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
+        deleteMenuItem.setText("Borrar");
         editMenu.add(deleteMenuItem);
+
+        jMenuItem1.setText("Listar");
+        editMenu.add(jMenuItem1);
 
         menuBar.add(editMenu);
 
@@ -161,6 +166,9 @@ private ControladorCliente controladorcliente;
 
     private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
         // TODO add your handling code here:
+        ListarClientes listarcliente = new ListarClientes(controladorcliente);
+        listarcliente.setVisible(true);
+        desktopPane.add(listarcliente);
     }//GEN-LAST:event_btnlistarActionPerformed
 
     private void btncrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncrearActionPerformed
@@ -173,14 +181,14 @@ private ControladorCliente controladorcliente;
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
         // TODO add your handling code here:
-        VentanaActualizar actualizarcliente = new VentanaActualizar(controladorcliente);
+        VentanaActualizarCliente actualizarcliente = new VentanaActualizarCliente(controladorcliente);
         actualizarcliente.setVisible(true);
         desktopPane.add(actualizarcliente);
     }//GEN-LAST:event_btnactualizarActionPerformed
 
     private void btnleerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnleerActionPerformed
         // TODO add your handling code here:
-        VentanaBuscar buscarcliente = new VentanaBuscar(controladorcliente);
+        VentanaBuscarCliente buscarcliente = new VentanaBuscarCliente(controladorcliente);
         buscarcliente.setVisible(true);
         desktopPane.add(buscarcliente);
     }//GEN-LAST:event_btnleerActionPerformed
@@ -236,6 +244,7 @@ private ControladorCliente controladorcliente;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem pasteMenuItem;
     // End of variables declaration//GEN-END:variables

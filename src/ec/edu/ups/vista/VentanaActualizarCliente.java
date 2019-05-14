@@ -12,13 +12,13 @@ import ec.edu.ups.modelo.Cliente;
  *
  * @author Byron PC
  */
-public class VentanaActualizar extends javax.swing.JInternalFrame {
+public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
     private ControladorCliente controladorcliente;
 
     /**
      * Creates new form VentanActualizar
      */
-    public VentanaActualizar(ControladorCliente controladorcliente) {
+    public VentanaActualizarCliente(ControladorCliente controladorcliente) {
         initComponents();
         this.controladorcliente = controladorcliente;
         jTextField1.setText(String.valueOf(this.controladorcliente.getCodigo()));
