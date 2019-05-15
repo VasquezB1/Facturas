@@ -7,20 +7,23 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.modelo.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Byron PC
  */
 public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
-private ControladorCliente controladorcliente;
+
+    private ControladorCliente controladorcliente;
+
     /**
      * Creates new form VentanaBuscar
      */
     public VentanaBuscarCliente(ControladorCliente controladorcliente) {
+        this.controladorcliente = controladorcliente;
         initComponents();
-        this.controladorcliente =controladorcliente;
-       
+
     }
 
     /**
@@ -34,7 +37,6 @@ private ControladorCliente controladorcliente;
 
         jPanel1 = new javax.swing.JPanel();
         txttelefono = new javax.swing.JTextField();
-        btnguardar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         txtdireccion = new javax.swing.JTextField();
         txtcedula = new javax.swing.JTextField();
@@ -55,13 +57,6 @@ private ControladorCliente controladorcliente;
 
         txttelefono.setEditable(false);
         txttelefono.setEnabled(false);
-
-        btnguardar.setText("Aceptar");
-        btnguardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnguardarActionPerformed(evt);
-            }
-        });
 
         btncancelar.setText("Cancelar");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +106,9 @@ private ControladorCliente controladorcliente;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel4)
@@ -131,10 +126,8 @@ private ControladorCliente controladorcliente;
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -165,11 +158,9 @@ private ControladorCliente controladorcliente;
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btncancelar)
-                    .addComponent(btnguardar))
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(btncancelar)
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,12 +187,14 @@ private ControladorCliente controladorcliente;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-       
-    }//GEN-LAST:event_btnguardarActionPerformed
-
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        txtnombre.setText("");
+        txtdireccion.setText("");
+        txtcedula.setText("");
+        txttelefono.setText("");
+        txtcodigo.setText("");
 
     }//GEN-LAST:event_btncancelarActionPerformed
 
@@ -211,21 +204,25 @@ private ControladorCliente controladorcliente;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        int codigo = Integer.parseInt(txtcodigo.getText());
-        Cliente cliente = controladorcliente.read(codigo);       
-        System.out.println(cliente);        
-        txtnombre.setText(cliente.getNombre());
-        txtcedula.setText((cliente.getCedula()));
-        txtdireccion.setText(cliente.getDireccion());
-        txttelefono.setText(cliente.getTelefono());      
-        
+
+        Cliente cliente = new Cliente();
+        cliente = controladorcliente.read(Integer.parseInt(txtcodigo.getText()));
+        //System.out.println(cliente);   
+        if (cliente == null) {
+            JOptionPane.showMessageDialog(null, "El cliente no existe");
+        } else {
+            txtnombre.setText(cliente.getNombre());
+            txtcedula.setText((cliente.getCedula()));
+            txtdireccion.setText(cliente.getDireccion());
+            txttelefono.setText(cliente.getTelefono());
+
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
-    private javax.swing.JButton btnguardar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -15,14 +15,17 @@ public class Producto {
     private int codigo;
     private String producto;
     private double precio;
+    private String descripcion;
 
-    public Producto() {
-    }
+   public Producto(){
+    
+}
 
-    public Producto(int codigo, String producto, double precio) {
+    public Producto(int codigo, String producto, double precio, String descripcion) {
         this.codigo = codigo;
         this.producto = producto;
         this.precio = precio;
+        this.descripcion = descripcion;
     }
 
     public int getCodigo() {
@@ -49,10 +52,18 @@ public class Producto {
         this.precio = precio;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 79 * hash + this.codigo;
+        hash = 67 * hash + this.codigo;
         return hash;
     }
 
@@ -76,8 +87,9 @@ public class Producto {
 
     @Override
     public String toString() {
-        return super.toString()+"Producto{" + "codigo=" + codigo + ", producto=" + producto + ", precio=" + precio + '}';
+        return super.toString()+"Producto{" + "codigo=" + codigo + ", producto=" + producto + ", precio=" + precio + ", descripcion=" + descripcion + '}';
     }
-    
-
 }
+
+
+   

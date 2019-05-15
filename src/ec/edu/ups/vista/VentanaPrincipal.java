@@ -6,6 +6,12 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorFactura;
+import ec.edu.ups.controladores.ControladorFacturaDetalle;
+import ec.edu.ups.controladores.ControladorProducto;
+import ec.edu.ups.modelo.Cliente;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -13,15 +19,68 @@ import ec.edu.ups.controladores.ControladorCliente;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 private ControladorCliente controladorcliente;
+private ControladorFactura controladorfactura;
+private ControladorFacturaDetalle controladorfacturadet;
+private ControladorProducto controladorproducto;
+private Locale locatizacion;
+private ResourceBundle mensajes;
     /**
+     * 
      * Creates new form Ventana
+     * 
      */
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
         controladorcliente = new ControladorCliente();
-    }
+        controladorproducto = new ControladorProducto();
+        //System.out.println("Localizacion por defecto: "+ Locale.getDefault().getLanguage());
+        locatizacion = new Locale("es","EC");
+        //Locale.setDefault(locatizacion);
+        //System.out.println("Localizacion Forzada: "+ Locale.getDefault().getLanguage());
+        mensajes= ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
+        //System.out.println("Mensajes");
+        //System.out.println(mensajes.getString("menu.item.crear"));
+        cambiaridioma();
+        
+        
+   }
+     public void cambiaridioma(){
+         mensajes= ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
+         clientemenu.setText(mensajes.getString("menu.cliente"));
+         productomenu.setText(mensajes.getString("menu.producto"));
+         facturamenu.setText(mensajes.getString("menu.factura"));
+         idiomamenu.setText(mensajes.getString("menu.idioma"));
+         
+         btncrear.setText(mensajes.getString("menu.item.crear"));
+         btnproductocrear.setText(mensajes.getString("menu.item.crear"));
+         btnfacturacrear.setText(mensajes.getString("menu.item.crear"));
+         
+         btnleer.setText(mensajes.getString("menu.item.buscar"));
+         btnproductoleeer.setText(mensajes.getString("menu.item.buscar"));
+         btnfacturaleeer.setText(mensajes.getString("menu.item.buscar"));
+         
+         btnactualizar.setText(mensajes.getString("menu.item.modificar"));
+         btnproductomodificar.setText(mensajes.getString("menu.item.modificar"));
+         btnfacturaactualizar.setText(mensajes.getString("menu.item.modificar"));
+         
+         btnborrar.setText(mensajes.getString("menu.item.borrar"));
+         btnproductoeliminar.setText(mensajes.getString("menu.item.borrar"));
+         btnfacturaborrar.setText(mensajes.getString("menu.item.borrar"));
+         
+         btnlistar.setText(mensajes.getString("menu.item.listar"));
+         btnproductolista.setText(mensajes.getString("menu.item.listar"));
+         btnfacturalistar.setText(mensajes.getString("menu.item.listar"));
+         
+         btnespañol.setText(mensajes.getString("menu.item.español"));
+         btningles.setText(mensajes.getString("menu.item.ingles"));
+         
+         
+         
+       
+   }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,28 +90,46 @@ private ControladorCliente controladorcliente;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
+        clientemenu = new javax.swing.JMenu();
         btncrear = new javax.swing.JMenuItem();
         btnleer = new javax.swing.JMenuItem();
         btnactualizar = new javax.swing.JMenuItem();
         btnborrar = new javax.swing.JMenuItem();
         btnlistar = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        productomenu = new javax.swing.JMenu();
+        btnproductocrear = new javax.swing.JMenuItem();
+        btnproductoleeer = new javax.swing.JMenuItem();
+        btnproductomodificar = new javax.swing.JMenuItem();
+        btnproductoeliminar = new javax.swing.JMenuItem();
+        btnproductolista = new javax.swing.JMenuItem();
+        facturamenu = new javax.swing.JMenu();
+        btnfacturacrear = new javax.swing.JMenuItem();
+        btnfacturaleeer = new javax.swing.JMenuItem();
+        btnfacturaactualizar = new javax.swing.JMenuItem();
+        btnfacturaborrar = new javax.swing.JMenuItem();
+        btnfacturalistar = new javax.swing.JMenuItem();
+        idiomamenu = new javax.swing.JMenu();
+        btnespañol = new javax.swing.JMenuItem();
+        btningles = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cliente");
+        clientemenu.setMnemonic('f');
+        clientemenu.setText("Cliente");
 
         btncrear.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         btncrear.setMnemonic('o');
@@ -62,7 +139,7 @@ private ControladorCliente controladorcliente;
                 btncrearActionPerformed(evt);
             }
         });
-        fileMenu.add(btncrear);
+        clientemenu.add(btncrear);
 
         btnleer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         btnleer.setMnemonic('s');
@@ -72,7 +149,7 @@ private ControladorCliente controladorcliente;
                 btnleerActionPerformed(evt);
             }
         });
-        fileMenu.add(btnleer);
+        clientemenu.add(btnleer);
 
         btnactualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         btnactualizar.setMnemonic('a');
@@ -82,7 +159,7 @@ private ControladorCliente controladorcliente;
                 btnactualizarActionPerformed(evt);
             }
         });
-        fileMenu.add(btnactualizar);
+        clientemenu.add(btnactualizar);
 
         btnborrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         btnborrar.setMnemonic('x');
@@ -92,7 +169,7 @@ private ControladorCliente controladorcliente;
                 btnborrarActionPerformed(evt);
             }
         });
-        fileMenu.add(btnborrar);
+        clientemenu.add(btnborrar);
 
         btnlistar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         btnlistar.setText("Listar");
@@ -101,46 +178,95 @@ private ControladorCliente controladorcliente;
                 btnlistarActionPerformed(evt);
             }
         });
-        fileMenu.add(btnlistar);
+        clientemenu.add(btnlistar);
 
-        menuBar.add(fileMenu);
+        menuBar.add(clientemenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Producto");
+        productomenu.setMnemonic('e');
+        productomenu.setText("Producto");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Crear");
-        editMenu.add(cutMenuItem);
+        btnproductocrear.setMnemonic('t');
+        btnproductocrear.setText("Crear");
+        btnproductocrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnproductocrearActionPerformed(evt);
+            }
+        });
+        productomenu.add(btnproductocrear);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Leer");
-        editMenu.add(copyMenuItem);
+        btnproductoleeer.setMnemonic('y');
+        btnproductoleeer.setText("Leer");
+        btnproductoleeer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnproductoleeerActionPerformed(evt);
+            }
+        });
+        productomenu.add(btnproductoleeer);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Actualizar");
-        editMenu.add(pasteMenuItem);
+        btnproductomodificar.setMnemonic('p');
+        btnproductomodificar.setText("Actualizar");
+        btnproductomodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnproductomodificarActionPerformed(evt);
+            }
+        });
+        productomenu.add(btnproductomodificar);
 
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Borrar");
-        editMenu.add(deleteMenuItem);
+        btnproductoeliminar.setMnemonic('d');
+        btnproductoeliminar.setText("Borrar");
+        btnproductoeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnproductoeliminarActionPerformed(evt);
+            }
+        });
+        productomenu.add(btnproductoeliminar);
 
-        jMenuItem1.setText("Listar");
-        editMenu.add(jMenuItem1);
+        btnproductolista.setText("Listar");
+        productomenu.add(btnproductolista);
 
-        menuBar.add(editMenu);
+        menuBar.add(productomenu);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        facturamenu.setMnemonic('h');
+        facturamenu.setText("Factura");
 
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
+        btnfacturacrear.setMnemonic('c');
+        btnfacturacrear.setText("Crear");
+        facturamenu.add(btnfacturacrear);
 
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
+        btnfacturaleeer.setMnemonic('a');
+        btnfacturaleeer.setText("Leer");
+        facturamenu.add(btnfacturaleeer);
 
-        menuBar.add(helpMenu);
+        btnfacturaactualizar.setText("Actualizar");
+        facturamenu.add(btnfacturaactualizar);
+
+        btnfacturaborrar.setText("Borrar");
+        facturamenu.add(btnfacturaborrar);
+
+        btnfacturalistar.setText("Listar");
+        facturamenu.add(btnfacturalistar);
+
+        menuBar.add(facturamenu);
+
+        idiomamenu.setText("Idioma");
+
+        btnespañol.setText("Español");
+        btnespañol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnespañolActionPerformed(evt);
+            }
+        });
+        idiomamenu.add(btnespañol);
+
+        btningles.setText("Ingles");
+        btningles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btninglesActionPerformed(evt);
+            }
+        });
+        idiomamenu.add(btningles);
+
+        menuBar.add(idiomamenu);
 
         setJMenuBar(menuBar);
 
@@ -161,7 +287,9 @@ private ControladorCliente controladorcliente;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarActionPerformed
-        System.exit(0);
+        VentanaBorrarCliente borrarclinte = new VentanaBorrarCliente(controladorcliente);
+        borrarclinte.setVisible(true);
+        desktopPane.add(borrarclinte);
     }//GEN-LAST:event_btnborrarActionPerformed
 
     private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
@@ -192,6 +320,53 @@ private ControladorCliente controladorcliente;
         buscarcliente.setVisible(true);
         desktopPane.add(buscarcliente);
     }//GEN-LAST:event_btnleerActionPerformed
+
+    private void btnespañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnespañolActionPerformed
+        // TODO add your handling code here:
+        locatizacion = new Locale("es","EC");
+        Locale.setDefault(locatizacion);
+        cambiaridioma();
+    }//GEN-LAST:event_btnespañolActionPerformed
+
+    private void btninglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninglesActionPerformed
+        // TODO add your handling code here:
+        locatizacion = new Locale("en","US");
+        Locale.setDefault(locatizacion);
+        cambiaridioma();
+    }//GEN-LAST:event_btninglesActionPerformed
+
+    private void btnproductocrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnproductocrearActionPerformed
+        // TODO add your handling code here:
+        this.setLocationRelativeTo(null);
+       VentanaCrearProducto crearProducto = new VentanaCrearProducto(controladorproducto);
+       crearProducto.setVisible(true);
+       desktopPane.add(crearProducto);
+        
+    }//GEN-LAST:event_btnproductocrearActionPerformed
+
+    private void btnproductoleeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnproductoleeerActionPerformed
+        // TODO add your handling code here:
+        this.setLocationRelativeTo(null);
+        VentanaBuscarProducto buscarproducto = new VentanaBuscarProducto(controladorproducto);
+        buscarproducto.setVisible(true);
+        desktopPane.add(buscarproducto);
+    }//GEN-LAST:event_btnproductoleeerActionPerformed
+
+    private void btnproductomodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnproductomodificarActionPerformed
+        // TODO add your handling code here:
+        VentanaActualizarProducto actualizarproducto = new VentanaActualizarProducto(controladorproducto);
+        actualizarproducto.setVisible(true);
+        desktopPane.add(actualizarproducto);
+        
+        
+    }//GEN-LAST:event_btnproductomodificarActionPerformed
+
+    private void btnproductoeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnproductoeliminarActionPerformed
+        // TODO add your handling code here:
+                VentanaBorrarProducto borrarproducto =new VentanaBorrarProducto(controladorproducto);
+                borrarproducto.setVisible(true);
+                desktopPane.add(borrarproducto);
+    }//GEN-LAST:event_btnproductoeliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,23 +405,33 @@ private ControladorCliente controladorcliente;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem btnactualizar;
     private javax.swing.JMenuItem btnborrar;
     private javax.swing.JMenuItem btncrear;
+    private javax.swing.JMenuItem btnespañol;
+    private javax.swing.JMenuItem btnfacturaactualizar;
+    private javax.swing.JMenuItem btnfacturaborrar;
+    private javax.swing.JMenuItem btnfacturacrear;
+    private javax.swing.JMenuItem btnfacturaleeer;
+    private javax.swing.JMenuItem btnfacturalistar;
+    private javax.swing.JMenuItem btningles;
     private javax.swing.JMenuItem btnleer;
     private javax.swing.JMenuItem btnlistar;
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JMenuItem btnproductocrear;
+    private javax.swing.JMenuItem btnproductoeliminar;
+    private javax.swing.JMenuItem btnproductoleeer;
+    private javax.swing.JMenuItem btnproductolista;
+    private javax.swing.JMenuItem btnproductomodificar;
+    private javax.swing.JMenu clientemenu;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu facturamenu;
+    private javax.swing.JMenu idiomamenu;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem pasteMenuItem;
+    private javax.swing.JMenu productomenu;
     // End of variables declaration//GEN-END:variables
 
 }

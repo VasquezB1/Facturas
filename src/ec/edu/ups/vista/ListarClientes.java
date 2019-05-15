@@ -26,8 +26,8 @@ public class ListarClientes extends javax.swing.JInternalFrame {
      * @param controladorCliente
      */
     public ListarClientes(ControladorCliente controladorCliente) {
-        initComponents();
         this.controladorCliente = controladorCliente;
+        initComponents();        
         llenarDatos();
     }
 

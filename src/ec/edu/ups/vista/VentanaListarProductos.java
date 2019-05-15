@@ -9,12 +9,12 @@ package ec.edu.ups.vista;
  *
  * @author Estudiante
  */
-public class ListarProductos extends javax.swing.JInternalFrame {
+public class VentanaListarProductos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ListarClientes
      */
-    public ListarProductos() {
+    public VentanaListarProductos() {
         initComponents();
     }
 

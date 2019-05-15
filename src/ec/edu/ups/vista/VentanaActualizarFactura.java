@@ -15,14 +15,14 @@ import java.util.Date;
  *
  * @author Estudiante
  */
-public class UpdateFactura extends javax.swing.JInternalFrame {
+public class VentanaActualizarFactura extends javax.swing.JInternalFrame {
 
     private ControladorFactura controladorFactura;
     private ControladorCliente controladorCliente;
     /**
      * Creates new form UpdateCliente
      */
-    public UpdateFactura(ControladorFactura controladorFactura, ControladorCliente controladorCliente) {
+    public VentanaActualizarFactura(ControladorFactura controladorFactura, ControladorCliente controladorCliente) {
         initComponents();
         this.controladorFactura = controladorFactura;
         this.controladorCliente = controladorCliente;

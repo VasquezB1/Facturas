@@ -11,13 +11,13 @@ import ec.edu.ups.controladores.ControladorProducto;
  *
  * @author Estudiante
  */
-public class DeleteFactura extends javax.swing.JInternalFrame {
+public class VentanaBorrarFactura extends javax.swing.JInternalFrame {
 
     private ControladorProducto controladorProducto;
     /**
      * Creates new form DeleteCliente
      */
-    public DeleteFactura(ControladorProducto controladorProducto) {
+    public VentanaBorrarFactura(ControladorProducto controladorProducto) {
         initComponents();
         this.controladorProducto = controladorProducto;
     }
