@@ -222,6 +222,11 @@ private ResourceBundle mensajes;
         productomenu.add(btnproductoeliminar);
 
         btnproductolista.setText("Listar");
+        btnproductolista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnproductolistaActionPerformed(evt);
+            }
+        });
         productomenu.add(btnproductolista);
 
         menuBar.add(productomenu);
@@ -367,6 +372,13 @@ private ResourceBundle mensajes;
                 borrarproducto.setVisible(true);
                 desktopPane.add(borrarproducto);
     }//GEN-LAST:event_btnproductoeliminarActionPerformed
+
+    private void btnproductolistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnproductolistaActionPerformed
+        // TODO add your handling code here:
+        VentanaListarProductos listarpro = new VentanaListarProductos(controladorproducto);
+        listarpro.setVisible(true);
+        desktopPane.add(listarpro);
+    }//GEN-LAST:event_btnproductolistaActionPerformed
 
     /**
      * @param args the command line arguments

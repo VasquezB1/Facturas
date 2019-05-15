@@ -6,6 +6,7 @@
 package ec.edu.ups.controladores;
 
 
+import ec.edu.ups.modelo.Cliente;
 import ec.edu.ups.modelo.Producto;
 import java.util.HashSet;
 import java.util.Set;
@@ -64,5 +65,8 @@ public class ControladorProducto {
         for (Producto producto : lista) {
             System.out.println(producto.toString());
         }
+    }
+     public Set<Producto> getLista(){
+        return lista;
     }
 }

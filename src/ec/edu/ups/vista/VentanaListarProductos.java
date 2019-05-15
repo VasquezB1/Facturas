@@ -5,19 +5,36 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controladores.ControladorProducto;
+import ec.edu.ups.modelo.Producto;
+import java.util.Set;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Estudiante
  */
 public class VentanaListarProductos extends javax.swing.JInternalFrame {
-
+private ControladorProducto controladorproducto;
     /**
      * Creates new form ListarClientes
      */
-    public VentanaListarProductos() {
+    public VentanaListarProductos(ControladorProducto controladorproducto) {
+        this.controladorproducto = controladorproducto;
         initComponents();
+        llenarDatos();
     }
-
+public void llenarDatos(){
+    DefaultTableModel modelo = (DefaultTableModel) tblpord.getModel();
+        Set<Producto> lista = controladorproducto.getLista();
+        for (Producto producto : lista) {
+            Object[] datos = {producto.getCodigo(),  
+                              producto.getProducto(), 
+                              producto.getPrecio(), 
+                              producto.getDescripcion()};
+            modelo.addRow(datos);
+        }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,14 +45,14 @@ public class VentanaListarProductos extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblpord = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblpord.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -43,11 +60,11 @@ public class VentanaListarProductos extends javax.swing.JInternalFrame {
                 "Codigo", "Producto", "Precio"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblpord);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Productos Comprados");
+        jLabel1.setText("Productos Facturados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +96,6 @@ public class VentanaListarProductos extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblpord;
     // End of variables declaration//GEN-END:variables
 }
