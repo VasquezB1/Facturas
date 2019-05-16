@@ -16,51 +16,51 @@ import java.util.Set;
 public class ControladorFactura {
     
     private Set<Factura> lista;
-    private int numero;
+    private int codigo;
 
     public int getCodigo() {
-        return numero;
+        return codigo;
     }
     
     public ControladorFactura() {
         lista = new HashSet<>();
-        numero = 1;
+        codigo = 0;
     }
     
-    public void create(Factura facturaCabecera){
-        facturaCabecera.setNumeroFactura(numero);
-        numero++;
-        lista.add(facturaCabecera);
+    public void create(Factura facturadetalle){
+        facturadetalle.setNumeroFactura(codigo);
+        codigo++;
+        lista.add(facturadetalle);
     }
     
     public Factura read(int numero){
-        for (Factura facturaCabecera : lista) {
-            if(facturaCabecera.getNumeroFactura()== numero){
-                return facturaCabecera;
+        for (Factura factura : lista) {
+            if(factura.getNumeroFactura()== numero){
+                return factura;
             }
         }
         return null;
     }
     
-    public void update(Factura facturaCabecera){
-        if(lista.contains(facturaCabecera)){
-            lista.remove(facturaCabecera);
-            lista.add(facturaCabecera);
+    public void update(Factura facturadetalle){
+        if(lista.contains(facturadetalle)){
+            lista.remove(facturadetalle);
+            lista.add(facturadetalle);
         }
     }
     
     public void delete(int numero){
-        for (Factura facturaCabecera : lista) {
-            if(facturaCabecera.getNumeroFactura()== numero){
-                lista.remove(facturaCabecera);
+        for (Factura facturadetalle : lista) {
+            if(facturadetalle.getNumeroFactura()== numero){
+                lista.remove(facturadetalle);
                 break;
             }
         }
     }
     
     public void imprimir(){
-        for (Factura facturaCabecera : lista) {
-            System.out.println(facturaCabecera.getNumeroFactura());
+        for (Factura facturadetalle : lista) {
+            System.out.println(facturadetalle.getNumeroFactura());
         }
     }
     

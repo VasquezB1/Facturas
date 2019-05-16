@@ -72,7 +72,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return super.toString()+ "Cliente{" + "codigo=" + codigo + ", nombre=" + nombre + ", cedula=" + cedula + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+        return  "Cliente{" + "codigo=" + codigo + ", nombre=" + nombre + ", cedula=" + cedula + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }
 
     @Override

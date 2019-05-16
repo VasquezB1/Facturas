@@ -16,24 +16,30 @@ import java.util.Set;
  *
  * @author Byron PC
  */
-public class ListarClientes extends javax.swing.JInternalFrame {
-
-    private ControladorCliente controladorCliente;
+public class VentanaListarClientes extends javax.swing.JInternalFrame {
+public static String x;
+    private ControladorCliente controladorcliente;
 
     /**
      * Creates new form ListarClientes
      *
-     * @param controladorCliente
+     * @param 
      */
-    public ListarClientes(ControladorCliente controladorCliente) {
-        this.controladorCliente = controladorCliente;
+    public VentanaListarClientes(ControladorCliente controladorcliente) {
+       x="x";
+       int a=VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b=VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
+        setVisible(true);
+
+        this.controladorcliente = controladorcliente;
         initComponents();        
         llenarDatos();
     }
 
     public void llenarDatos() {
         DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
-        Set<Cliente> lista = controladorCliente.getLista();
+        Set<Cliente> lista = controladorcliente.getLista();
         for (Cliente cliente : lista) {
             Object[] datos = {cliente.getCodigo(),
                 cliente.getNombre(),
@@ -61,6 +67,23 @@ public class ListarClientes extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,6 +110,11 @@ public class ListarClientes extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -15,16 +15,22 @@ import javax.swing.JOptionPane;
  */
 public class VentanaCrearProducto extends javax.swing.JInternalFrame {
 
+    public static String x;
     private ControladorProducto controladorproducto;
 
     /**
      * Creates new form VentanaCrearProducto
      */
     public VentanaCrearProducto(ControladorProducto controladorproducto) {
-
+        x = "x";
         initComponents();
         this.controladorproducto = controladorproducto;
         txtcodigopro.setText(String.valueOf(this.controladorproducto.getCodigo() + 1));
+        int a = VentanaPrincipal.desktopPane.getWidth() - this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight() - this.getHeight();
+        setLocation(a / 2, b / 2);
+        setVisible(true);
+
     }
 
     /**
@@ -40,6 +46,11 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
         txtprodcuto = new javax.swing.JTextField();
         txtrecio = new javax.swing.JTextField();
         txtdesc = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtprecio = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        txtcant = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btncancelar = new javax.swing.JButton();
@@ -49,35 +60,77 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        txtcodigo1 = new javax.swing.JTextField();
         txtcodigo2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtcodigopro.setEditable(false);
         txtcodigopro.setEnabled(false);
-        getContentPane().add(txtcodigopro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 60, -1));
-        getContentPane().add(txtprodcuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 130, 30));
-        getContentPane().add(txtrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 130, 30));
+        getContentPane().add(txtcodigopro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 60, -1));
+        getContentPane().add(txtprodcuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 130, 30));
+        getContentPane().add(txtrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 130, 30));
 
         txtdesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtdescActionPerformed(evt);
             }
         });
-        getContentPane().add(txtdesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 130, 30));
+        getContentPane().add(txtdesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 130, 30));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("Total");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
+        txtprecio.setEditable(false);
+        txtprecio.setEnabled(false);
+        getContentPane().add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 130, -1));
+
+        jButton1.setText("Calcular");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 80, -1));
+
+        txtcant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcantActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 130, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("Cantidad");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Vrinda", 1, 18)); // NOI18N
         jLabel1.setText("Crear Producto");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Descripcion");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         btncancelar.setText("Cancelar");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,11 +138,11 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
                 btncancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 100, -1));
+        getContentPane().add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 100, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Codigo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         btncrear.setText("Crear");
         btncrear.addActionListener(new java.awt.event.ActionListener() {
@@ -97,15 +150,15 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
                 btncrearActionPerformed(evt);
             }
         });
-        getContentPane().add(btncrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 100, -1));
+        getContentPane().add(btncrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 100, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Producto");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Precio");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jTextArea1.setBackground(new java.awt.Color(204, 204, 204));
         jTextArea1.setColumns(20);
@@ -114,13 +167,8 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
         jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Crear Producto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(153, 0, 153))); // NOI18N
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 390, 220));
-        getContentPane().add(txtcodigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 60, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 390, 320));
         getContentPane().add(txtcodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 60, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Precio");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,14 +181,18 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
         producto.setProducto(txtprodcuto.getText());
         producto.setDescripcion(txtdesc.getText());
         producto.setPrecio(Double.parseDouble(txtrecio.getText()));
+        producto.setCantidad(Integer.parseInt(txtcant.getText()));
+        producto.setTotal1(Double.parseDouble(txtprecio.getText()));
         controladorproducto.create(producto);
 
         JOptionPane.showMessageDialog(null, "Se ha creado el producto");
-
+        System.out.println(producto);
         txtcodigopro.setText(String.valueOf(this.controladorproducto.getCodigo() + 1));
         txtprodcuto.setText("");
         txtdesc.setText("");
         txtrecio.setText("");
+        txtcant.setText("");
+        txtprecio.setText("");
 
     }//GEN-LAST:event_btncrearActionPerformed
 
@@ -154,22 +206,42 @@ public class VentanaCrearProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdescActionPerformed
 
+    private void txtcantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcantActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        double preciot = Double.parseDouble(txtrecio.getText()) * Integer.parseInt(txtcant.getText());
+        txtprecio.setText(String.valueOf(preciot));
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+        
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncrear;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField txtcodigo1;
+    private javax.swing.JTextField txtcant;
     private javax.swing.JTextField txtcodigo2;
     private javax.swing.JTextField txtcodigopro;
     private javax.swing.JTextField txtdesc;
+    private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprodcuto;
     private javax.swing.JTextField txtrecio;
     // End of variables declaration//GEN-END:variables

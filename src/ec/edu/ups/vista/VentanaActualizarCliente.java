@@ -15,13 +15,18 @@ import javax.swing.JOptionPane;
  */
 public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
     private ControladorCliente controladorcliente;
-
+public static String x;
     /**
      * Creates new form VentanActualizar
      */
     public VentanaActualizarCliente(ControladorCliente controladorcliente) {
         this.controladorcliente = controladorcliente;     
         initComponents();
+        x="x";
+        int a=VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b=VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
+        setVisible(true);
          
     }
 
@@ -53,6 +58,23 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -194,14 +216,16 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Cliente cliente = new Cliente();
-        cliente.setNombre(txtnombre.getText());
         cliente.setCedula(txtcedula.getText());
+        cliente.setNombre(txtnombre.getText());
         cliente.setDireccion(txtdir.getText());
         cliente.setTelefono(txttele.getText());
         cliente.setCodigo(Integer.parseInt(txtcodigo.getText()));
         controladorcliente.update(cliente);
-        System.out.println(cliente);
+       
+        
         JOptionPane.showMessageDialog(null, "El cliente se ha actualizado");
+                
         txtnombre.setText("");
         txtdir.setText("");
         txtcedula.setText("");
@@ -214,16 +238,19 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
 
     private void btnactuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactuActionPerformed
         // TODO add your handling code here:
-        Cliente clienteactu = new Cliente();
-        clienteactu= controladorcliente.read(Integer.parseInt(txtcodigo.getText()));
-        if(clienteactu == null){
+        Cliente cliente = new Cliente();
+                
+        cliente= controladorcliente.read(Integer.parseInt(txtcodigo.getText()));
+        if(cliente == null){
             JOptionPane.showMessageDialog(null, "El cliente no existe");
                 
         }else{
-        txtcedula.setText(clienteactu.getCedula());
-        txtnombre.setText(clienteactu.getNombre());
-        txtdir.setText(clienteactu.getDireccion());
-        txttele.setText(clienteactu.getTelefono());
+        txtcedula.setText(cliente.getCedula());
+        txtnombre.setText(cliente.getNombre());
+        txtdir.setText(cliente.getDireccion());
+        txttele.setText(cliente.getTelefono());
+        controladorcliente.delete(Integer.parseInt(txtcodigo.getText()));
+        
         
     }
         
@@ -232,12 +259,17 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-         txtnombre.setText("");
+        txtnombre.setText("");
         txtdir.setText("");
         txtcedula.setText("");
         txttele.setText(""); 
         txtcodigo.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

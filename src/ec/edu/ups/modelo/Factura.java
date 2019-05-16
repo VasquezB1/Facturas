@@ -52,7 +52,8 @@ public class Factura {
     }
 
     public String getFecha() {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+      java.util.Date fecha = new Date(); 
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String fechaTexto = formato.format(fecha.getTime());
         return fechaTexto;
     }

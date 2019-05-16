@@ -35,18 +35,25 @@ public class ControladorCliente {
     
     public Cliente read(int codigo){
         for(Cliente cliente : lista){
-            if(codigo == cliente.getCodigo()){
+            if(cliente.getCodigo() == codigo){
                 return cliente;
             }
         }
         return null;
     }
-    
-    public void update(Cliente objeto){
-        if(lista.contains(objeto)){
-            lista.remove(objeto);
-            lista.add(objeto);
+    public Cliente readcedula(String cedula){
+        for(Cliente clientecedula : lista){
+            if(clientecedula.getCedula().equals(cedula)){
+                return clientecedula;
+            }
         }
+        return null;
+    }
+    
+    public ControladorCliente update(Cliente objeto){
+        objeto.setCodigo(codigo);
+        lista.add(objeto);
+        return null;
     }
     
     public void delete(int codigo){

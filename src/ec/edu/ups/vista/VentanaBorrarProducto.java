@@ -14,14 +14,20 @@ import javax.swing.JOptionPane;
  * @author Estudiante
  */
 public class VentanaBorrarProducto extends javax.swing.JInternalFrame {
-
+public static String x;
     private ControladorProducto controladorProducto;
     /**
      * Creates new form DeleteCliente
      */
     public VentanaBorrarProducto(ControladorProducto controladorProducto) {
         initComponents();
+        x="x";
         this.controladorProducto = controladorProducto;
+        int a=VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b=VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
+        setVisible(true);
+
     }
 
     /**
@@ -61,6 +67,23 @@ public class VentanaBorrarProducto extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Producto a Eliminar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(153, 0, 153))); // NOI18N
 
@@ -236,6 +259,11 @@ public class VentanaBorrarProducto extends javax.swing.JInternalFrame {
             txtdesc1.setText(producto.getDescripcion());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -13,17 +13,23 @@ import javax.swing.JOptionPane;
  *
  * @author Byron PC
  */
+ 
 public class VentanaCrearCliente extends javax.swing.JInternalFrame {
+   public static String x;
 private ControladorCliente controladorcliente;
     /**
      * Creates new form VentanaCrearCliente
      */
     
     public VentanaCrearCliente(ControladorCliente controladorcliente) {
-        
+        x="x";
         initComponents();
         this.controladorcliente = controladorcliente;
         txtcodigo.setText((String.valueOf(this.controladorcliente.getCodigo()+1)));
+        int a=VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b=VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
+        setVisible(true);
     }
 
     /**
@@ -57,6 +63,23 @@ private ControladorCliente controladorcliente;
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -196,17 +219,14 @@ private ControladorCliente controladorcliente;
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
         //btnguardar.setText("Se ha guardado el cliente");
-        
         Cliente cliente = new Cliente();
-        cliente.setCodigo(Integer.parseInt(txtcodigo.getText()));
-        
         cliente.setCedula(txtcedula.getText());
         cliente.setNombre(txtnombre.getText());
         cliente.setDireccion(txtdireccion.getText());
         cliente.setTelefono(txttelefono.getText());
         controladorcliente.create(cliente);
         
-        JOptionPane.showMessageDialog(this, "Se ha creado un cliente!!","Crear Cliente",JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, "Se ha creado un cliente!!");
         //Volver a establecer el codigo y limpiar las cajas de texto
        txtcodigo.setText((String.valueOf(this.controladorcliente.getCodigo()+1)));
         txtnombre.setText("");
@@ -220,8 +240,14 @@ private ControladorCliente controladorcliente;
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        setVisible(false);
         
     }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

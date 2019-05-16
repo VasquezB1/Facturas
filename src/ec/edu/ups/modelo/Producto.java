@@ -16,17 +16,39 @@ public class Producto {
     private String producto;
     private double precio;
     private String descripcion;
-
+     private int cantidad;
+private double total1;
+   
    public Producto(){
     
 }
 
-    public Producto(int codigo, String producto, double precio, String descripcion) {
+    public Producto(int codigo, String producto, double precio, String descripcion, int cantidad, double total1) {
         this.codigo = codigo;
         this.producto = producto;
         this.precio = precio;
         this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.total1 = total1;
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public double getTotal1() {
+        return total1;
+    }
+
+    public void setTotal1(double total1) {
+        this.total1 = total1;
+    }
+
+   
 
     public int getCodigo() {
         return codigo;
@@ -87,8 +109,10 @@ public class Producto {
 
     @Override
     public String toString() {
-        return super.toString()+"Producto{" + "codigo=" + codigo + ", producto=" + producto + ", precio=" + precio + ", descripcion=" + descripcion + '}';
+        return "Producto{" + "codigo=" + codigo + ", producto=" + producto + ", precio=" + precio + ", descripcion=" + descripcion + ", cantidad=" + cantidad + ", total1=" + total1 + '}';
     }
+
+    
 }
 
 

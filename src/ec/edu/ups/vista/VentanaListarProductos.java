@@ -16,12 +16,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VentanaListarProductos extends javax.swing.JInternalFrame {
 private ControladorProducto controladorproducto;
+public static String x;
     /**
      * Creates new form ListarClientes
      */
     public VentanaListarProductos(ControladorProducto controladorproducto) {
         this.controladorproducto = controladorproducto;
         initComponents();
+        x="x";
+        int a=VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b=VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
+        setVisible(true);
+
         llenarDatos();
     }
 public void llenarDatos(){
@@ -51,6 +58,23 @@ public void llenarDatos(){
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         tblpord.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,11 +110,16 @@ public void llenarDatos(){
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

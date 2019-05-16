@@ -16,13 +16,18 @@ import javax.swing.JOptionPane;
 public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
 
     private ControladorCliente controladorcliente;
-
+   public static String x;
     /**
      * Creates new form VentanaBuscar
      */
     public VentanaBuscarCliente(ControladorCliente controladorcliente) {
         this.controladorcliente = controladorcliente;
+        x="x";
         initComponents();
+        int a=VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b=VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
+        setVisible(true);
 
     }
 
@@ -52,6 +57,23 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS DEL CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 0, 153))); // NOI18N
 
@@ -206,19 +228,25 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         Cliente cliente = new Cliente();
-        cliente = controladorcliente.read(Integer.parseInt(txtcodigo.getText()));
-        //System.out.println(cliente);   
+        cliente = controladorcliente.read(Integer.parseInt(txtcodigo.getText()));   
         if (cliente == null) {
             JOptionPane.showMessageDialog(null, "El cliente no existe");
         } else {
+            
             txtnombre.setText(cliente.getNombre());
             txtcedula.setText((cliente.getCedula()));
             txtdireccion.setText(cliente.getDireccion());
             txttelefono.setText(cliente.getTelefono());
-
+            
         }
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

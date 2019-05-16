@@ -27,10 +27,11 @@ public class ControladorFacturaDetalle {
         numero = 1;
     }
     
-    public void create(FacturaDetalle facturaDetalle){
-        facturaDetalle.setCodigo(numero);
-        numero++;
-        lista.add(facturaDetalle);
+    public void create(FacturaDetalle objeto){
+         numero++;
+        objeto.setCodigo(numero);
+       
+        lista.add(objeto);
     }
     
     public FacturaDetalle read(int numero){
@@ -63,5 +64,7 @@ public class ControladorFacturaDetalle {
             System.out.println(facturaDetalle.getCodigo());
         }
     }
-    
+    public Set<FacturaDetalle> getLista(){
+        return lista;
+    }
 }

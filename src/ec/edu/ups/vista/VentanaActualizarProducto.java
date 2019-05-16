@@ -15,12 +15,19 @@ import javax.swing.JOptionPane;
  */
 public class VentanaActualizarProducto extends javax.swing.JInternalFrame {
 private ControladorProducto controladorproducto;
+public static String x;
     /**
      * Creates new form VentanaActualizarProducto
      */
     public VentanaActualizarProducto(ControladorProducto controladorproducto) {
         this.controladorproducto=controladorproducto;
+        x="x";
         initComponents();
+        int a=VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b=VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
+        setVisible(true);
+
     }
 
     /**
@@ -78,6 +85,23 @@ private ControladorProducto controladorproducto;
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Actualizar Producto");
@@ -234,6 +258,7 @@ private ControladorProducto controladorproducto;
         producto.setDescripcion(txtdesc1.getText());
         producto.setCodigo(Integer.parseInt(txtcodigopro1.getText()));
         controladorproducto.update(producto);
+        System.out.println(producto);
         JOptionPane.showMessageDialog(null, "El producto fue actualizado");
         txtprodcuto.setText("");
         txtdesc.setText("");
@@ -261,6 +286,12 @@ private ControladorProducto controladorproducto;
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+        
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
