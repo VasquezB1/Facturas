@@ -11,7 +11,9 @@ import java.util.Set;
 
 /**
  *
- * @author Eduardo Ayora
+ * @author Byron PC
+ * @since 16-Mayo-2019
+ * Controladores
  */
 public class ControladorFactura {
     

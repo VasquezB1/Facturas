@@ -14,6 +14,8 @@ import java.util.Set;
 /**
  *
  * @author Byron PC
+ * @since 16-Mayo-2019
+ * Controladores
  */
 public class ControladorProducto {
     private Set<Producto>lista;

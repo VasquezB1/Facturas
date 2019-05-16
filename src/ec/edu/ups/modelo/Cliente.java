@@ -10,6 +10,8 @@ import java.util.Objects;
 /**
  *
  * @author Byron PC
+ * @since 16-Mayo-2019
+ * Modelos
  */
 public class Cliente {
     private int codigo;

@@ -17,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Estudiante
+ *@author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaBorrarFactura extends javax.swing.JInternalFrame {
 public static String x;

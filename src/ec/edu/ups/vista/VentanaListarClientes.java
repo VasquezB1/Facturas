@@ -15,6 +15,8 @@ import java.util.Set;
 /**
  *
  * @author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaListarClientes extends javax.swing.JInternalFrame {
 public static String x;

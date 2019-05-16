@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaBuscarProducto extends javax.swing.JInternalFrame {
 private ControladorProducto controladorproducto;

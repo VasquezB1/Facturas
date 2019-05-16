@@ -11,7 +11,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Estudiante
+ * @author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaBorrarProducto extends javax.swing.JInternalFrame {
 public static String x;

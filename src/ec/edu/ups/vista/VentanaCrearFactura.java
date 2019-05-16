@@ -24,6 +24,8 @@ import java.util.Set;
 /**
  *
  * @author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaCrearFactura extends javax.swing.JInternalFrame {
 

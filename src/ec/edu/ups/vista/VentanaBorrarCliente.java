@@ -11,7 +11,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Byron PC
+ *@author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaBorrarCliente extends javax.swing.JInternalFrame {
 private ControladorCliente controladorcliente;

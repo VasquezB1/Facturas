@@ -12,7 +12,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Estudiante
+ * @author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaListarProductos extends javax.swing.JInternalFrame {
 private ControladorProducto controladorproducto;

@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
 

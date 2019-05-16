@@ -12,7 +12,9 @@ import java.util.List;
 
 /**
  *
- * @author Eduardo Ayora
+ * @author Byron PC
+ * @since 16-Mayo-2019
+ * Modelos
  */
 public class Factura {
     

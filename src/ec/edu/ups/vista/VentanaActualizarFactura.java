@@ -13,7 +13,9 @@ import java.util.Date;
 
 /**
  *
- * @author Estudiante
+ * @author Byron PC
+ * @since 16-Mayo-2019
+ * Ventanas
  */
 public class VentanaActualizarFactura extends javax.swing.JInternalFrame {
 

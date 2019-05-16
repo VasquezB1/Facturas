@@ -10,6 +10,8 @@ import java.util.Date;
 /**
  *
  * @author Byron PC
+ * @since 16-Mayo-2019
+ * Modelos
  */
 public class Producto {
     private int codigo;
